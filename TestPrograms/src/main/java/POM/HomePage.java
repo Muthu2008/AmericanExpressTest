@@ -52,10 +52,10 @@ public class HomePage extends BaseClass {
 		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("bannerOption")));
 		element.click();*/
 	//	WebElement bannerOption2 = getBannerOption();
-		System.out.println("display banner");
-		System.out.println(bannerOption.getText());
+		//System.out.println("display banner");
+		//System.out.println(bannerOption.getText());
 		bannerOption.click();
-		System.out.println("after banner");
+		//System.out.println("after banner");
 		
 		
 		

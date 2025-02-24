@@ -1,5 +1,8 @@
 package AmericanExpressTest.TestPrograms;
 
+import java.io.IOException;
+
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import POM.AllcardsPage;
@@ -10,7 +13,7 @@ import POM.UserdetailsPage;
 public class AmericanExpressMain extends BaseClass {
 
 	@Test
-	public void happyPath() throws InterruptedException
+	public void happyPath() throws InterruptedException, IOException
 	{
 		HomePage hp=new HomePage(driver);
 		//Thread.sleep(20000);
@@ -27,10 +30,32 @@ public class AmericanExpressMain extends BaseClass {
 		gcDes.SelectDemandezvotreCarteButton();
 		Thread.sleep(2000);
 		UserdetailsPage usePage=new UserdetailsPage(driver);
-		usePage.userDetails("muthukumar", "Ta", "20/08/1989", "muthu123@gmail.com", "07462748374");
+		FileLipMethods flpm=new FileLipMethods();
+		flpm.loadProperties("C:\\Users\\muthut\\git\\repository\\TestPrograms\\src\\main\\java\\AmericanExpressTest\\TestPrograms\\External.properties");
+		String fname=flpm.getProperties("Firstname");
+		String lname=flpm.getProperties("Lastname");
+		String dob=flpm.getProperties("Dop");
+		String email=flpm.getProperties("Email");
+		String no=flpm.getProperties("Phno");
+		
+		
+		usePage.userDetails(fname, lname, dob, email, no);
 		Thread.sleep(2000);
-		usePage.selectContinourButton();
-				
+		WebElement continerButton;
+		usePage.clickElementUsingJSE(usePage.continerButton);
+		Thread.sleep(2000);
+		usePage.userDetailsPage2();
+		Thread.sleep(2000);
+		usePage.clickElementUsingJSE(usePage.continerButton);
+		Thread.sleep(2000);
+		usePage.userDetailsPage3();
+		Thread.sleep(2000);
+		usePage.clickElementUsingJSE(usePage.continerButton);
+		usePage.userDetailsPage4();
+		hp.selectBanner();
+		Thread.sleep(2000);
+		usePage.userDetailsPage5();
+		
 	}
 
 }
